@@ -49,8 +49,7 @@ try {
         glob(filename, function(err, filenames) {
             filenames.forEach(function(_filename) {
                 fs.createReadStream(_filename).pipe(concat(function (data) {
-                    return bufferStream.push('/**** ' + _filename + ' ***/\n'
-                        + cssbeautify(data.toString(), options));
+                    return bufferStream.push(cssbeautify(data.toString(), options));
                 }));
             });
         });
